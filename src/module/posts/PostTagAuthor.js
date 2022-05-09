@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const PostTagAuthorStyles = styled.div`
   .post-info {
@@ -26,11 +26,21 @@ const PostTagAuthorStyles = styled.div`
     top: 63px;
     line-height: 28px;
   }
+  ${(props) =>
+    props.color === "secondary" &&
+    css`
+      .post-info {
+        color: #6b6b6b;
+      }
+      .post-dot {
+        background-color: #b1b5c3;
+      }
+    `};
 `;
 
-function PostTagAuthor({ date, author }) {
+function PostTagAuthor({ date, author, color, ...props }) {
   return (
-    <PostTagAuthorStyles>
+    <PostTagAuthorStyles color={color} {...props}>
       <div className="post-info">
         <span className="post-date">{date}</span>
         <span className="post-dot"></span>
